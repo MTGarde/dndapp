@@ -17,7 +17,7 @@ import java.util.HashMap;
 @NoArgsConstructor
 @ToString
 @MappedSuperclass
-public abstract class Entity {
+public abstract class GameEntity {
     @Id
     @GeneratedValue
     @Setter(value = AccessLevel.NONE)
@@ -55,7 +55,7 @@ public abstract class Entity {
         this.currentHp = hp;
     }
 
-    public Entity(String name, int maxHp, int atk) {
+    public GameEntity(String name, int maxHp, int atk) {
         setName(name);
         setMaxHp(maxHp);
         setAtk(atk);
@@ -87,7 +87,7 @@ public abstract class Entity {
         }
     }
 
-    public static HashMap<String, Integer> effectDamage = new HashMap<>();
+    protected static HashMap<String, Integer> effectDamage = new HashMap<>();
     static {
         effectDamage.put("passiveheal", -3); // healing is negative damage
         effectDamage.put("poison", 3);
